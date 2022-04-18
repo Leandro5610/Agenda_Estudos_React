@@ -1,14 +1,24 @@
  import React from "react";
+import { ITarefa } from "../../types/Tarefas";
 import Botao from "../Botao";
 import style from './Form.module.scss'
+import {v4 as uuid} from 'uuid'
 
- class Fomulario extends React. Component{
+ class Fomulario extends React. Component<{ setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>}>{
      state ={
          tarefa :"",
          tempo:"00:00"          
      }
      adicionarTarefa(evento : React.FormEvent){
          evento.preventDefault()
+         this.props.setTarefas(tarefasAntigas=>[...tarefasAntigas,{...this.state,
+            selecionado :false,
+            completado:false, 
+            id:uuid()}])
+         this.setState({
+            tarefa:"",
+            tempo:"00:00"
+         })
         console.log('state', this.state)
      }
      render(){

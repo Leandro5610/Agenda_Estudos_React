@@ -2,31 +2,27 @@ import React, { useState } from 'react';
 import { Cronometro } from '../componentes/cronometro';
 import Fomulario from '../componentes/Formulario';
 import Lista from '../componentes/Lista';
+import { ITarefa } from '../types/Tarefas';
 import style from './App.module.scss'
 
 function App() {
-  let [tarefas, setTarefas] =useState(
-    [
-        {
-            tarefa:"JavaScript",
-            tempo:"01:30:00"
-        },
-        {
-            tarefa:"React",
-            tempo:"02:00:00"
-        },
-        {
-            tarefa:"Phyton",
-            tempo:"03:00:00"
-        }
-       
-    ]
-    
-)
+  const [tarefas, setTarefas] =useState<ITarefa[]>([])
+  const [selecionado, setSelecionado]= useState<ITarefa>()
+  const[completado, setCompletado] = useState<ITarefa>()
+  function selecionaTarefa(tarefaSelecionada:ITarefa){
+    setSelecionado(tarefaSelecionada)
+    setTarefas(tarefasAnteriores =>tarefasAnteriores.map(tarefa =>({
+      ...tarefa, 
+      selecionado:tarefa.id === tarefaSelecionada.id ? true: false
+    })))
+  }
   return (
     <div className= {style.AppStyle}>
      <Fomulario setTarefas={setTarefas}/>
-     <Lista tarefas={tarefas}/>
+     <Lista tarefas={tarefas}
+      selecionaTarefa={selecionaTarefa}
+
+     />
      <Cronometro/>
      
     </div>
