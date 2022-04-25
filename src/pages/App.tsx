@@ -23,7 +23,9 @@ function App() {
       selecionaTarefa={selecionaTarefa}
 
      />
-     <Cronometro/>
+     <Cronometro
+     selecionado={selecionado}
+     />
      
     </div>
   );

@@ -37,7 +37,7 @@ import {v4 as uuid} from 'uuid'
                     <input type="time" name="tempo" id="tempo" required step="1" onChange={evento => this.setState({...this.state,tempo:evento.target.value})} 
                     value={this.state.tempo} min="00:00:00" max="02:00:00"/>
                     </div>
-                        <Botao type="submit">
+                        <Botao type="submit" >
                             Agendar
                         </Botao>
             </form>
