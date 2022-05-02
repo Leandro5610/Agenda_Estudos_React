@@ -7,7 +7,7 @@ import Item from './item';
  interface Props{
     tarefas:ITarefa[],
     selecionaTarefa:(tarefaSelecionada:ITarefa)=> void
-
+    
 }
 
 export function Lista({tarefas,selecionaTarefa}:Props) {
